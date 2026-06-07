@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
@@ -84,6 +85,14 @@ export default function LoginPage() {
           z-index: 0;
         }
 
+        .auth-page::before {
+          content: "";
+          position: fixed;
+          inset:0;
+          background: rgba(0,0,0,.38);
+          z-index:0;
+        }
+
         .auth-content {
           position: relative;
           z-index: 1;
@@ -115,16 +124,12 @@ export default function LoginPage() {
           margin-bottom: 32px;
         }
 
-        .brand-icon {
-          width: 56px;
-          height: 56px;
-          background: var(--green);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 16px;
-          font-size: 26px;
+        .school-logo {
+          width:80px;
+          height:80px;
+          object-fit:contain;
+          display:block;
+          margin:0 auto 18px;
         }
 
         .brand h1 {
@@ -303,18 +308,18 @@ export default function LoginPage() {
       `}</style>
 
       <div className="auth-page">
-        <img
-          className="auth-bg"
-          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600"
-          alt=""
-        />
+      <img
+        className="auth-bg"
+        src="/images/cn6.png"
+        alt=""
+      />
 
         <div className="auth-content">
           <div className="auth-card">
             <div className="brand">
-              <div className="brand-icon">🎓</div>
-              <h1>Login Pendaftaran Citra Negara</h1>
-              <p>Masuk ke portal pendaftaran Citra Negara untuk melanjutkan proses admisi Anda.</p>
+              <img className="school-logo" src="/images/logo-cn.png" alt="Logo Sekolah" />
+              <h1>Selamat Datang di portal pendaftaran SMK Citra Negara</h1>
+              <p>Silakan masuk untuk melanjutkan pendaftaran anda.</p>
             </div>
 
             {error && (
@@ -344,7 +349,11 @@ export default function LoginPage() {
               <div className="form-group">
                 <div className="label-row">
                   <label>Kata Sandi</label>
-                  <a href="#" className="forgot-link">Lupa Password?</a>
+                  <Link
+                    href="/forgot-password"
+                    className="text-sm text-blue-600 hover:underline">
+                    Lupa Password?
+                  </Link>
                 </div>
                 <div className="input-wrap">
                   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">

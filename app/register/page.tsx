@@ -106,6 +106,14 @@ export default function RegisterPage() {
           margin-bottom: 32px;
         }
 
+        .school-logo {
+          width:80px;
+          height:80px;
+          object-fit:contain;
+          display:block;
+          margin:0 auto 16px;
+        }
+
         .brand-icon {
           width: 56px;
           height: 56px;
@@ -300,16 +308,16 @@ export default function RegisterPage() {
       <div className="auth-page">
         <img
           className="auth-bg"
-          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600"
+          src="/images/cn9.jpg"
           alt=""
         />
 
         <div className="auth-content">
           <div className="auth-card">
             <div className="brand">
-              <div className="brand-icon">🎓</div>
-              <h1>Registrasi Akun Citra Negara</h1>
-              <p>Daftar ke portal pendaftaran Citra Negara untuk memulai proses admisi Anda.</p>
+              <img src="/images/logo-cn.png" alt="Logo Sekolah" className="school-logo" />
+              <h1>Registrasi Calon Siswa</h1>
+              <p>Lengkapi data diri untuk memulai pendaftaran online.</p>
             </div>
 
             {error && (

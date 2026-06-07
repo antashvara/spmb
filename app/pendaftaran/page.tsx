@@ -397,7 +397,7 @@ export default function PendaftaranPage() {
   async function uploadBerkasFile(key: BerkasKey, file: File) {
     if (!userId || !siswaId) return null;
     const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-    const path = `${userId}/${key}/${safeName}`;
+    const path = `${userId}/${key}/${Date.now()}-${safeName}`;
     const { error: upErr } = await supabase.storage
       .from("berkas-pendaftaran")
       .upload(path, file, { upsert: true, contentType: file.type });
@@ -501,6 +501,17 @@ export default function PendaftaranPage() {
         }
       }
       setBerkasUrls(urls);
+
+      console.log("siswaId:", siswaId);
+
+const { data: cekSiswa, error: cekError } = await supabase
+  .from("siswa")
+  .select("id, user_id")
+  .eq("id", siswaId)
+  .single();
+
+console.log("cekSiswa:", cekSiswa);
+console.log("cekError:", cekError);
 
       const berkasPayload = {
         siswa_id: siswaId,
@@ -1315,7 +1326,7 @@ export default function PendaftaranPage() {
             </strong>
           </div>
         )}
-        {countdown.isExpired && (
+        {/* {countdown.isExpired && (
           <div
             style={{
               display: "inline-flex",
@@ -1332,7 +1343,7 @@ export default function PendaftaranPage() {
           >
             <span>🚫</span> Pendaftaran sudah ditutup
           </div>
-        )}
+        )} */}
       </div>
 
       <div className="pend-stepper-wrap" data-animate data-delay="0">
