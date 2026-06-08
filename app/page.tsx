@@ -11,7 +11,7 @@ import HeroCountdown from "@/components/landing/hero-countdown";
 const JURUSAN_LIST = [
   {
     kode: "PPLG",
-    nama: "Rekayasa Perangkat Lunak",
+    nama: "Pengembangan Perangkant Lunak & Gim",
     desc: "Belajar pengembangan aplikasi web, mobile, dan sistem perangkat lunak dengan stack industri terkini.",
     img: "/jurusan/pplg.jpg",
     delay: "",
@@ -39,14 +39,14 @@ const JURUSAN_LIST = [
   },
   {
     kode: "MPLB",
-    nama: "Manajemen & Layanan Bisnis",
+    nama: "Manajemen Perkantoran & Layanan Bisnis",
     desc: "Administrasi profesional, manajemen dokumen digital, dan layanan pelanggan standar industri.",
     img: "/jurusan/mplb.jpg",
     delay: "reveal-delay-1",
   },
   {
-    kode: "PHW",
-    nama: "Perhotelan & Pariwisata",
+    kode: "PH",
+    nama: "Perhotelan",
     desc: "Siap berkarier di industri hospitality dengan pelatihan layanan hotel, front office, dan pariwisata.",
     img: "/jurusan/phw.jpg",
     delay: "reveal-delay-2",
@@ -185,8 +185,7 @@ export default function LandingPage() {
         @keyframes float-b { 0%,100%{transform:translateY(0) rotate(1.5deg)} 50%{transform:translateY(-16px) rotate(1.5deg)} }
         @keyframes float-c { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-8px) rotate(-1deg)} }
         @keyframes float-d { 0%,100%{transform:translateY(0) rotate(2deg)} 50%{transform:translateY(-10px) rotate(2deg)} }
-        @keyframes marquee-left { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-        @keyframes marquee-right { from{transform:translateX(-50%)} to{transform:translateX(0)} }
+        
         @keyframes fadeDown {
           from { opacity: 1; transform: translateY(0); }
           to   { opacity: 0; transform: translateY(-8px); }
@@ -206,11 +205,15 @@ export default function LandingPage() {
 
         
         .hero {
-          padding: 140px 0 100px;
-          padding-top: calc(68px + 72px);
-          display: grid; grid-template-columns: 1fr 1fr;
-          gap: 60px; align-items: center; min-height: 100vh;
-        }
+  padding-top: calc(68px + 72px);
+  padding-bottom: 100px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+
+  align-items: start; /* bukan center */
+}
         .hero-left { animation: fadeUp 0.9s ease forwards; }
         .hero-badge {
           display: inline-flex; align-items: center; gap: 8px;
@@ -225,8 +228,13 @@ export default function LandingPage() {
           animation: pulse 2s infinite;
         }
         .hero h1 {
-          font-size: clamp(3rem, 5.5vw, 5rem); font-weight: 800;
-          color: var(--ink); margin-bottom: 24px; max-width: 560px;
+          font-size: clamp(1.9rem, 3.2vw, 3rem);
+          font-weight: 800;
+          line-height: 1.15;
+          letter-spacing: -0.03em;
+          color: var(--ink);
+          margin-bottom: 20px;
+          max-width: 620px;
         }
         .hero p {
           font-size: 1.05rem; color: var(--muted);
@@ -235,56 +243,30 @@ export default function LandingPage() {
         }
         .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-        .hero-right {
-          position: relative; height: 560px;
-          animation: fadeIn 1.1s ease 0.3s forwards; opacity: 0;
-        }
-        .hero-photo {
-          position: absolute; border-radius: 20px;
-          border: 3px solid white; object-fit: cover;
-          box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-        }
-        .hero-photo-1 { width:220px;height:280px;top:0;left:20px;animation:float-a 5s ease-in-out infinite; }
-        .hero-photo-2 { width:180px;height:220px;top:30px;left:255px;animation:float-b 6s ease-in-out infinite 0.5s; }
-        .hero-photo-3 { width:200px;height:260px;top:20px;right:0;animation:float-c 5.5s ease-in-out infinite 1s; }
-        .hero-photo-4 { width:240px;height:200px;bottom:60px;left:10px;animation:float-d 6.5s ease-in-out infinite 0.7s; }
-        .hero-photo-5 { width:180px;height:220px;bottom:20px;right:30px;animation:float-a 5.8s ease-in-out infinite 1.2s; }
+       
+        .hero-right{
+          display:flex;
+          justify-content:flex-start;
+          align-items:flex-start;
 
-        .hero-badge-float {
-          position: absolute; bottom: 120px; left: 50%;
-          transform: translateX(-50%);
-          background: white; border-radius: var(--radius);
-          padding: 14px 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-          display: flex; align-items: center; gap: 12px;
-          white-space: nowrap; z-index: 10;
-          animation: float-b 4s ease-in-out infinite;
-        }
-        .hero-badge-float .num {
-          font-family: 'Bricolage Grotesque', sans-serif;
-          font-weight: 800; font-size: 1.5rem; color: var(--ink);
-        }
-        .hero-badge-float .lbl { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
-        .hero-badge-float .dot {
-          width: 36px; height: 36px; border-radius: 50%;
-          background: var(--accent-light);
-          display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+          position:relative;
         }
 
-        
-        .marquee-section { background: var(--ink-2,#1A1A1A); padding: 22px 0; overflow: hidden; }
-        .marquee-track {
-          display: flex; width: max-content;
-          animation: marquee-left 22s linear infinite;
-        }
-        .marquee-item {
-          display: flex; align-items: center; gap: 24px;
-          padding: 0 24px; font-size: 0.82rem; font-weight: 700;
-          letter-spacing: 0.1em; text-transform: uppercase;
-          color: rgba(255,255,255,0.5); white-space: nowrap;
-        }
-        .marquee-dot { width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0; }
+          .hero-main-image{
+            width:100%;
+            max-width:520px;
+            height:500px;
+            border-radius:28px;
+            overflow:hidden;
+          }
 
-        
+          .hero-main-image video{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            pointer-events:none;
+          }
+       
         .challenges { background: var(--bg-soft); padding: 120px 0; }
         .challenges-inner {
           display: grid; grid-template-columns: 1fr 1fr;
@@ -485,23 +467,7 @@ export default function LandingPage() {
         }
 
         
-        .marquee-section-2 { background:var(--bg-soft);padding:22px 0;overflow:hidden; }
-        .marquee-track-2 { display:flex;width:max-content;animation:marquee-right 40s linear infinite; }
-        .marquee-item-2 { display:flex;align-items:center;gap:24px;padding:0 24px;font-size:0.82rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,0.3);white-space:nowrap; }
-        .marquee-dot-2 { width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0; }
 
-        
-        .testimonial { padding: 120px 0; overflow: hidden; }
-        .testimonial h2 { font-size:clamp(2rem,3.5vw,3rem);font-weight:800;margin-bottom:60px; }
-        .testi-track-wrap { overflow: hidden; }
-        .testi-track { display:flex;gap:24px;animation:marquee-left 30s linear infinite;width:max-content; }
-        .testi-track:hover { animation-play-state: paused; }
-        .testi-card { background:var(--bg-soft);border-radius:var(--radius-lg);padding:36px;width:380px;flex-shrink:0;display:flex;flex-direction:column;gap:20px; }
-        .testi-quote { font-size:0.97rem;line-height:1.7;color:var(--ink);font-style:italic;flex:1; }
-        .testi-author { display:flex;align-items:center;gap:14px; }
-        .testi-avatar { width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid white;box-shadow:0 2px 12px rgba(0,0,0,0.1); }
-        .testi-name { font-weight:700;font-size:0.9rem; }
-        .testi-jurusan { font-size:0.8rem;color:var(--muted); }
 
         
         .cta-section { padding: 80px 0; background: var(--bg-soft); }
@@ -581,77 +547,44 @@ export default function LandingPage() {
         }
       `}</style>
 
-      {}
+
       <section style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="hero">
             <div className="hero-left">
-              <div className="hero-badge">Penerimaan Murid Baru 2025/2026</div>
-              <h1>Wujudkan Mimpimu Bersama SMK Citra Negara</h1>
+              <div className="hero-badge">Penerimaan Murid Baru 2026/2027</div>
+              <h1>Pilihan Yang Tepat Di Sekolah Yang M.A.N.T.A.P</h1>
               <p>
-                Pilih jurusan sesuai passion-mu, daftar online dengan mudah, dan mulai
-                perjalanan karier digitalmu bersama ribuan alumni sukses kami.
+                Membangun masa depan cerah melalui pendidikan berbasis
+                teknologi dan karakter. Bergabunglah dengan komunitas
+                pembelajar yang inovatif dan siap kerja.
               </p>
               <div className="hero-ctas">
-                <Link href="/register" className="btn-primary">Daftar PPDB →</Link>
+                <Link href="/register" className="btn-primary">Daftar Sekarang →</Link>
                 <a href="#alur" className="btn-outline">Lihat Alur</a>
               </div>
               <HeroCountdown />
             </div>
 
-            <div className="hero-right">
-              {}
-              <img className="hero-photo hero-photo-1"
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=500&fit=crop&q=80"
-                alt="Siswa belajar" />
-              {}
-              <img className="hero-photo hero-photo-2"
-                src="https://images.unsplash.com/photo-1580582932707-520afc8711b3?w=400&h=400&fit=crop&q=80"
-                alt="Lab komputer" />
-              {}
-              <img className="hero-photo hero-photo-3"
-                src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&h=500&fit=crop&q=80"
-                alt="Siswa di kelas" />
-              {}
-              <img className="hero-photo hero-photo-4"
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=400&fit=crop&q=80"
-                alt="Kerja tim" />
-              {}
-              <img className="hero-photo hero-photo-5"
-                src="https://images.unsplash.com/photo-1560785496-3c9d5ec3cdf7?w=400&h=440&fit=crop&q=80"
-                alt="Siswa tersenyum" />
-
-              <div className="hero-badge-float">
-                <div className="dot">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1C5C38" strokeWidth="2.5">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="num">1.240+</div>
-                  <div className="lbl">Pendaftar Tahun Ini</div>
-                </div>
-              </div>
+          <div className="hero-right">
+            <div className="hero-main-image">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                disablePictureInPicture
+                controlsList="nodownload nofullscreen noremoteplayback"
+              >
+                <source src="/images/bg-video.mp4" type="video/mp4" />
+              </video>
             </div>
+
           </div>
+        </div>
         </div>
       </section>
 
-      {}
-      <div className="marquee-section">
-        <div className="marquee-track">
-          {["TKJ", "PPLG", "MPLB", "Teknik", "Digital", "Kreatif", "TKJ", "PPLG", "MPLB", "Teknik", "Digital", "Kreatif"].map((item, i) => (
-            <div className="marquee-item" key={i}>
-              {item}<span className="marquee-dot" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {}
       <section className="challenges">
         <div className="container">
           <div className="challenges-inner">
@@ -716,7 +649,7 @@ export default function LandingPage() {
             </div>
 
             <div className="challenges-right reveal">
-              {}
+              
               <img className="challenges-img"
                 src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&h=800&fit=crop&q=80"
                 alt="Siswa belajar" />
@@ -729,7 +662,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {}
+      
       <section className="jurusan" id="jurusan">
         <div className="container">
           <div className="jurusan-header reveal">
@@ -741,7 +674,7 @@ export default function LandingPage() {
             {JURUSAN_LIST.map((j) => (
               <div className={`jurusan-item reveal ${j.delay}`} key={j.kode}>
                 <div className="jurusan-img-wrap">
-                  {}
+                  
                   <img className="jurusan-img" src={j.img} alt={j.nama} />
                   <div className="jurusan-badge">{j.kode}</div>
                 </div>
@@ -758,7 +691,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {}
+      
       <section className="alur" id="alur">
         <div className="container">
           <div className="alur-top">
@@ -811,97 +744,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {}
+      
       <section className="stats" id="tentang">
         <div className="container">
           <StatsBlock />
         </div>
       </section>
-
-      {}
-      <div className="marquee-section-2">
-        <div className="marquee-track-2">
-          {["Teknik", "Kreatif", "Bisnis", "Digital", "Desain", "Jaringan", "Pemasaran", "Teknik", "Kreatif", "Bisnis", "Digital", "Desain", "Jaringan", "Pemasaran"].map((item, i) => (
-            <div className="marquee-item-2" key={i}>
-              {item}<span className="marquee-dot-2" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {}
-      <section className="testimonial">
-        <div className="container">
-          <div className="reveal">
-            <div className="section-label">Kata Alumni</div>
-            <h2>Dipercaya Ribuan<br />Alumni di Seluruh Indonesia</h2>
-          </div>
-        </div>
-        <div style={{ marginTop: "60px", padding: "0 5vw" }}>
-          <div className="testi-track-wrap">
-            <div className="testi-track">
-              {[
-                {
-                  quote: "Berkat PPLG di SMK Citra Negara, gue langsung diterima kerja di startup tech sebelum lulus. Kurikulumnya relevan banget sama dunia industri sekarang.",
-                  name: "Rizky Fadillah",
-                  meta: "Alumni PPLG · 2023 · Junior Dev",
-                  img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&q=80",
-                },
-                {
-                  quote: "Proses daftarnya gampang banget, semua online. Guru-gurunya juga supportif. Sekarang gue udah jadi teknisi jaringan di perusahaan BUMN.",
-                  name: "Dimas Ardiansyah",
-                  meta: "Alumni TKJ · 2022 · Network Engineer",
-                  img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&q=80",
-                },
-                {
-                  quote: "MPLB kasih gue skill administrasi digital yang langsung kepake. Magang di perusahaan multinasional waktu kelas 12, dan langsung ditawari kerja setelah lulus.",
-                  name: "Nadia Syahputri",
-                  meta: "Alumni MPLB · 2023 · Admin Executive",
-                  img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&q=80",
-                },
-                {
-                  quote: "Fasilitas lab-nya lengkap banget. Gue bisa langsung praktek jaringan real di sekolah, jadi waktu magang udah nggak kagok sama sekali.",
-                  name: "Bagas Pratama",
-                  meta: "Alumni TKJ · 2022 · IT Support",
-                  img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&q=80",
-                },
-                {
-                  quote: "Gurunya berpengalaman dari industri langsung. Ilmu yang gue dapet di PPLG langsung applicable waktu kerja, bukan cuma teori doang.",
-                  name: "Siti Rahayu",
-                  meta: "Alumni PPLG · 2021 · Frontend Developer",
-                  img: "https://images.unsplash.com/photo-1494790108755-2616b612b4c0?w=80&h=80&fit=crop&q=80",
-                },
-                {
-                  quote: "Berkat PPLG di SMK Citra Negara, gue langsung diterima kerja di startup tech sebelum lulus. Kurikulumnya relevan banget sama dunia industri sekarang.",
-                  name: "Rizky Fadillah",
-                  meta: "Alumni PPLG · 2023 · Junior Dev",
-                  img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&q=80",
-                },
-                {
-                  quote: "Proses daftarnya gampang banget, semua online. Guru-gurunya juga supportif. Sekarang gue udah jadi teknisi jaringan di perusahaan BUMN.",
-                  name: "Dimas Ardiansyah",
-                  meta: "Alumni TKJ · 2022 · Network Engineer",
-                  img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&q=80",
-                },
-              ].map((t, i) => (
-                <div className="testi-card" key={i}>
-                  <div className="testi-quote">&ldquo;{t.quote}&rdquo;</div>
-                  <div className="testi-author">
-                    {}
-                    <img className="testi-avatar" src={t.img} alt={t.name} />
-                    <div>
-                      <div className="testi-name">{t.name}</div>
-                      <div className="testi-jurusan">{t.meta}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {}
+      
       <section className="cta-section" id="kontak">
         <div className="container">
           <div className="cta-inner">
@@ -925,7 +774,6 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="cta-deco reveal">
-              {}
               <img
                 src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=520&h=520&fit=crop&q=80"
                 alt="Siswa SMK Citra Negara"
