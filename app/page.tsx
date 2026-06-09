@@ -6,8 +6,9 @@ import Link from "next/link";
 import LandingFooter from "@/components/landing/footer";
 import LandingNavbar from "@/components/landing/navbar";
 import StatsBlock from "@/components/landing/stats-block";
-import HeroCountdown from "@/components/landing/hero-countdown";
 import HeroStats from "@/components/landing/hero-stats";
+import VisionMission from "@/components/landing/vision-mission";
+import JurusanGrid from "@/components/landing/jurusan-grid";
 
 const JURUSAN_LIST = [
   {
@@ -637,6 +638,492 @@ export default function LandingPage() {
 
         }
 
+        .vision-section{
+
+  padding:120px 0;
+
+  background:#F5F7F4;
+}
+
+.vision-header{
+
+  text-align:center;
+
+  max-width:760px;
+
+  margin:auto auto 70px;
+}
+
+.vision-header h2{
+
+  font-size:clamp(2.2rem,4vw,3.4rem);
+
+  margin-bottom:20px;
+
+  font-weight:800;
+}
+
+.vision-header p{
+
+  color:#666;
+
+  line-height:1.8;
+}
+
+.vision-grid{
+
+  display:grid;
+
+  grid-template-columns:2fr 1fr;
+
+  gap:22px;
+}
+
+.vision-image-card{
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:26px;
+
+  min-height:360px;
+}
+
+.vision-image-card img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  transition:.5s;
+}
+
+.vision-image-card:hover img{
+
+  transform:scale(1.06);
+}
+
+.vision-overlay{
+
+  position:absolute;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  padding:34px;
+
+  background:
+
+  linear-gradient(
+
+  transparent,
+
+  rgba(0,0,0,.72)
+
+  );
+
+}
+
+.vision-overlay h3{
+
+  color:white;
+
+  margin-bottom:12px;
+}
+
+.vision-overlay p{
+
+  color:rgba(255,255,255,.82);
+
+  line-height:1.7;
+}
+
+.vision-green-card,
+
+.vision-dark-card,
+
+.vision-white-card{
+
+  border-radius:26px;
+
+  padding:34px;
+
+  transition:.35s;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.vision-green-card{
+
+  background:
+
+  linear-gradient(
+
+  135deg,
+
+  #1C5C38,
+
+  #28B56F
+
+  );
+
+  color:white;
+}
+
+.vision-dark-card{
+
+  background:#0B6C60;
+
+  color:white;
+}
+
+.vision-white-card{
+
+  background:white;
+
+  border:1px solid rgba(0,0,0,.06);
+}
+
+.vision-green-card:hover,
+
+.vision-dark-card:hover,
+
+.vision-white-card:hover{
+
+  transform:translateY(-8px);
+
+  box-shadow:
+
+  0 18px 40px rgba(0,0,0,.12);
+}
+
+.vision-icon{
+
+  width:58px;
+
+  height:58px;
+
+  border-radius:18px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:rgba(255,255,255,.15);
+
+  font-size:1.5rem;
+
+  margin-bottom:20px;
+}
+
+.vision-grid > :nth-child(4){
+
+  grid-column:span 1;
+
+  min-height:170px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+}
+
+@media(max-width:900px){
+
+  .vision-grid{
+
+    grid-template-columns:1fr;
+  }
+
+}
+
+    .jurusan-modern{
+
+padding:120px 0;
+
+background:#EEF3EE;
+
+}
+
+.jurusan-modern-header{
+
+margin-bottom:50px;
+
+}
+
+.jurusan-modern-header h2{
+
+font-size:clamp(2rem,4vw,3rem);
+
+margin:12px 0;
+
+}
+
+.jurusan-modern-header p{
+
+color:#666;
+
+max-width:600px;
+
+line-height:1.8;
+
+}
+
+.jurusan-modern-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(310px,1fr));
+
+gap:28px;
+
+}
+
+.jurusan-modern-card{
+
+position:relative;
+
+height:440px;
+
+overflow:hidden;
+
+border-radius:26px;
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.08);
+
+}
+
+.jurusan-modern-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.jurusan-bg{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:.45s;
+
+}
+
+.jurusan-modern-card:hover .jurusan-bg{
+
+transform:scale(1.08);
+
+}
+
+.jurusan-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(0,0,0,.05),
+
+rgba(0,0,0,.75)
+
+);
+
+}
+
+.jurusan-logo{
+  position:absolute;
+  top:18px;
+  left:18px;
+
+  width:54px;
+  height:54px;
+
+  object-fit:contain;
+
+  background:transparent; /* ubah */
+  padding:0;              /* hapus padding */
+  border-radius:0;        /* atau 8px kalau mau */
+  box-shadow:none;        /* hapus shadow putih */
+  z-index:2;
+}
+
+.jurusan-badge-modern{
+
+position:absolute;
+
+right:18px;
+
+top:20px;
+
+padding:8px 14px;
+
+border-radius:30px;
+
+background:
+
+rgba(44,177,116,.2);
+
+backdrop-filter:blur(10px);
+
+color:white;
+
+font-size:.72rem;
+
+font-weight:700;
+
+letter-spacing:.08em;
+
+z-index:2;
+
+}
+
+.jurusan-content{
+
+position:absolute;
+
+left:28px;
+
+right:28px;
+
+bottom:28px;
+
+z-index:2;
+
+color:white;
+
+}
+
+.jurusan-content h3{
+
+font-size:2rem;
+
+margin-bottom:6px;
+
+}
+
+.jurusan-content h4{
+
+font-size:1.1rem;
+
+margin-bottom:10px;
+
+font-weight:700;
+
+}
+
+.jurusan-content p{
+
+font-size:.88rem;
+
+line-height:1.7;
+
+opacity:.9;
+
+margin-bottom:20px;
+
+}
+
+.jurusan-content button{
+  width:100%;
+  border:none;
+  padding:14px;
+  border-radius:14px;
+
+  background:#ffffff;
+  color:#111111;   /* TAMBAHKAN INI */
+
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.jurusan-content button:hover{
+
+background:#1C5C38;
+
+color:white;
+
+}
+
+@media(max-width:768px){
+
+    .jurusan-modern{
+    padding:80px 0;
+    }
+
+    .jurusan-modern-card{
+    height:390px;
+    }
+}
+
+.jurusan-content button{
+  width:100%;
+  border:none;
+  padding:14px;
+
+  border-radius:14px;
+
+  background:#ffffff;
+
+  color:#111111;      /* tambahkan ini */
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.jurusan-content button:hover{
+  background:#1C5C38;
+  color:#ffffff;
+}
+
+.jurusan-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.jurusan-btn span{
+  transition:.3s;
+}
+
+.jurusan-btn:hover span{
+  transform:translateX(4px);
+}
+
+}
+
 
 
       `}</style>
@@ -679,6 +1166,10 @@ export default function LandingPage() {
       </section>
 
       <HeroStats />
+
+      <VisionMission />
+
+      <JurusanGrid /> 
 
       <section className="challenges">
         <div className="container">
