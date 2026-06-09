@@ -31,10 +31,10 @@ export default function LoginPage() {
       } else {
         localStorage.setItem("spmb_last_email", email);
         if (data.user?.role === "admin") {
-          router.push("/dashboard");
-        } else {
-          router.push("/pendaftaran");
-        }
+  router.push("/dashboard");
+} else {
+  router.push("/dashboard/users");
+}
       }
     } catch {
       setError("Koneksi gagal. Coba lagi.");
