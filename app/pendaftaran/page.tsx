@@ -513,13 +513,17 @@ const { data: cekSiswa, error: cekError } = await supabase
 console.log("cekSiswa:", cekSiswa);
 console.log("cekError:", cekError);
 
-      const berkasPayload = {
-        siswa_id: siswaId,
-        foto_url: urls.foto || null,
-        ijazah_url: urls.ijazah || null,
-        rapor_url: urls.rapor || null,
-        kk_url: urls.kk || null,
-      };
+
+const berkasPayload = {
+  siswa_id: siswaId,
+  foto_url: urls.foto || null,
+  ijazah_url: urls.ijazah || null,
+  rapor_url: urls.rapor || null,
+  kk_url: urls.kk || null,
+};
+
+console.log("siswaId =", siswaId);
+console.log("berkasPayload =", berkasPayload);
 
       const { data: existingBerkas } = await supabase
         .from("berkas")
