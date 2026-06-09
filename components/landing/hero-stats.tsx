@@ -1,49 +1,96 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const stats = [
+  {
+    value: 1200,
+    suffix: "+",
+    label: "Siswa Aktif",
+  },
+  {
+    value: 98,
+    suffix: "%",
+    label: "Lulusan Terserap",
+  },
+  {
+    value: 6,
+    suffix: "",
+    label: "Program Keahlian",
+  },
+  {
+    value: 25,
+    suffix: "+",
+    label: "Mitra Industri",
+  },
+];
+
 export default function HeroStats() {
-  const stats = [
-    {
-      value: "2500+",
-      label: "Siswa Aktif",
-      icon: "👨‍🎓",
-    },
-    {
-      value: "95%",
-      label: "Lulusan Bekerja",
-      icon: "🚀",
-    },
-    {
-      value: "50+",
-      label: "Mitra Industri",
-      icon: "🤝",
-    },
-    {
-      value: "120+",
-      label: "Prestasi Nasional",
-      icon: "🏆",
-    },
-  ];
+  const [start, setStart] = useState(false);
+
+  useEffect(() => {
+    setStart(true);
+  }, []);
 
   return (
-    <section className="hero-stats-section">
-      <div className="container">
-        <div className="hero-stats-grid">
-          {stats.map((item) => (
-            <div
-              key={item.label}
-              className="hero-stat-card"
-            >
-              <div className="hero-stat-icon">
-                {item.icon}
-              </div>
-
-              <h3>{item.value}</h3>
-
-              <p>{item.label}</p>
-
-              <span className="hero-stat-glow" />
-            </div>
-          ))}
-        </div>
+    <section className="hero-stats">
+      <div className="hero-stats-container">
+        {stats.map((item, i) => (
+          <StatCard
+            key={i}
+            value={item.value}
+            suffix={item.suffix}
+            label={item.label}
+            start={start}
+          />
+        ))}
       </div>
     </section>
+  );
+}
+
+function StatCard({
+  value,
+  suffix,
+  label,
+  start,
+}: {
+  value: number;
+  suffix: string;
+  label: string;
+  start: boolean;
+}) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!start) return;
+
+    let current = 0;
+
+    const step = Math.ceil(value / 60);
+
+    const interval = setInterval(() => {
+      current += step;
+
+      if (current >= value) {
+        current = value;
+        clearInterval(interval);
+      }
+
+      setCount(current);
+    }, 20);
+
+    return () => clearInterval(interval);
+  }, [start, value]);
+
+  return (
+    <div className="hero-stat-card">
+      <h2>
+        {count}
+        {suffix}
+      </h2>
+
+      <p>{label}</p>
+    </div>
   );
 }

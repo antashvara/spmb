@@ -546,6 +546,99 @@ export default function LandingPage() {
           .step-num { font-size: 2rem; }
           .hero-ctas { flex-direction: column; }
         }
+
+        .hero-stats{
+          margin-top:-70px;
+          position:relative;
+          z-index:5;
+          padding-bottom:90px;
+        }
+
+        .hero-stats-container{
+          max-width:1200px;
+          margin:auto;
+
+          display:grid;
+          grid-template-columns:repeat(4,1fr);
+          gap:24px;
+
+          padding:0 5vw;
+        }
+
+        .hero-stat-card{
+          background:rgba(255,255,255,.72);
+
+          backdrop-filter:blur(18px);
+
+          border:1px solid rgba(255,255,255,.5);
+
+          border-radius:28px;
+
+          padding:34px;
+
+          box-shadow:
+          0 10px 40px rgba(0,0,0,.08);
+
+          transition:.35s;
+        }
+
+        .hero-stat-card:hover{
+
+          transform:
+            translateY(-8px)
+            scale(1.02);
+
+          box-shadow:
+            0 25px 60px rgba(0,0,0,.12);
+        }
+
+        .hero-stat-card h2{
+
+          font-size:3rem;
+
+          font-weight:800;
+
+          color:#1C5C38;
+
+          margin-bottom:8px;
+
+          font-family:'Bricolage Grotesque';
+        }
+
+        .hero-stat-card p{
+
+          color:#666;
+
+          font-size:.95rem;
+
+          font-weight:500;
+        }
+
+        @media(max-width:900px){
+
+          .hero-stats{
+
+            margin-top:30px;
+          }
+
+          .hero-stats-container{
+
+            grid-template-columns:repeat(2,1fr);
+          }
+
+        }
+
+        @media(max-width:600px){
+
+          .hero-stats-container{
+
+            grid-template-columns:1fr;
+          }
+
+        }
+
+
+
       `}</style>
 
 
@@ -564,7 +657,6 @@ export default function LandingPage() {
                 <Link href="/register" className="btn-primary">Daftar Sekarang →</Link>
                 <a href="#alur" className="btn-outline">Lihat Alur</a>
               </div>
-              <HeroCountdown />
             </div>
 
           <div className="hero-right">
@@ -585,6 +677,8 @@ export default function LandingPage() {
         </div>
         </div>
       </section>
+
+      <HeroStats />
 
       <section className="challenges">
         <div className="container">

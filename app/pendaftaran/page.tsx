@@ -1341,7 +1341,6 @@ console.log("cekError:", cekError);
               marginBottom: 16,
             }}
           >
-            <span>🚫</span> Pendaftaran sudah ditutup
           </div>
         )} */}
       </div>
