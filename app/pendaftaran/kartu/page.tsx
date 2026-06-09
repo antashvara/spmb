@@ -134,7 +134,7 @@ export default function KartuPendaftaranPage() {
     try {
       const canvas = await html2canvas(card, {
         useCORS: true,
-        backgrounColor: "#ffffff",
+        backgroundColor: "#ffffff",
       });
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
