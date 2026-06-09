@@ -7,6 +7,7 @@ import LandingFooter from "@/components/landing/footer";
 import LandingNavbar from "@/components/landing/navbar";
 import StatsBlock from "@/components/landing/stats-block";
 import HeroCountdown from "@/components/landing/hero-countdown";
+import HeroStats from "@/components/landing/hero-stats";
 
 const JURUSAN_LIST = [
   {
