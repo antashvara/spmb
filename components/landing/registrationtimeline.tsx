@@ -32,7 +32,7 @@ const steps = [
 
 export default function RegistrationTimeline() {
   return (
-    <section id="alur" className="timeline-section" id="alur">
+    <section id="alur" className="timeline-section">
       <div className="container">
         <div className="timeline-header reveal">
           <span className="section-label">REGISTRATION FLOW</span>
