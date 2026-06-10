@@ -103,7 +103,6 @@ body {
   }
 
   .stats-wrapper,
-  .panel,
   .info-card,
   .bottom-row {
     break-inside: avoid;

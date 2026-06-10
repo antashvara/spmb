@@ -1237,7 +1237,7 @@ color:white;
             <div className="challenges-right reveal">
               
               <img className="challenges-img"
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&h=800&fit=crop&q=80"
+                src="/images/cn9.jpg"
                 alt="Siswa belajar" />
               <div className="stat-float">
                 <div className="big">98%</div>

@@ -265,31 +265,6 @@ export default function DashboardPage() {
           margin-top: 6px;
         }
 
-        
-        .panel {
-          background: #fff;
-          border: 1px solid #E5E7EB;
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
-        .panel-header {
-          padding: 18px 22px;
-          border-bottom: 1px solid #E5E7EB;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 10px;
-        }
-
-        .panel-header h3 {
-          font-family: 'Bricolage Grotesque', sans-serif;
-          font-size: 16px;
-          font-weight: 700;
-          color: #0C0C0C;
-        }
-
         .live-badge {
           display: inline-flex;
           align-items: center;
@@ -522,15 +497,6 @@ export default function DashboardPage() {
             <div className="stat-label">Total Pengguna</div>
           </div>
 
-          <div className="stat-card" data-animate data-delay="100">
-            <div className="stat-icon-wrap">
-              <LogIn size={20} strokeWidth={2} />
-            </div>
-            <div className={`stat-value${pulse ? " pulse" : ""}`}>
-              {displayStats.totalLogins}
-            </div>
-            <div className="stat-label">Login Hari Ini</div>
-          </div>
 
           <div className="stat-card" data-animate data-delay="200">
             <div className="stat-icon-wrap">
@@ -542,26 +508,13 @@ export default function DashboardPage() {
             <div className="stat-label">Keberhasilan</div>
           </div>
 
-          <div className="stat-card danger" data-animate data-delay="300">
-            <div className="stat-icon-wrap">
-              <XCircle size={20} strokeWidth={2} />
-            </div>
-            <div className={`stat-value${pulse ? " pulse" : ""}`}>
-              {displayStats.failedLogins}
-            </div>
-            <div className="stat-label">Gagal</div>
+          <div>
+
           </div>
         </div>
 
         <section className="panel" data-animate data-delay="100">
-          <div className="panel-header">
-            <h3>Histori Login Terkini</h3>
-            <span className="live-badge">
-              <span className="live-dot" aria-hidden="true" />
-              LIVE · {lastUpdatedStr}
-            </span>
-          </div>
-
+          
           {loading ? (
             <div className="loading-state" data-animate data-delay="0">
               <div className="spinner" />
@@ -569,7 +522,6 @@ export default function DashboardPage() {
             </div>
           ) : history.length === 0 ? (
             <div className="empty-state" data-animate data-delay="0">
-              Belum ada histori login.
             </div>
           ) : (
             <>
