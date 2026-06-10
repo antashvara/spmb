@@ -1249,33 +1249,6 @@ color:white;
       </section>
 
       
-      <section className="jurusan" id="jurusan">
-        <div className="container">
-          <div className="jurusan-header reveal">
-            <div className="section-label">Program Studi</div>
-            <h2>6 Jurusan Unggulan<br />untuk Masa Depanmu</h2>
-          </div>
-
-          <div>
-            {JURUSAN_LIST.map((j) => (
-              <div className={`jurusan-item reveal ${j.delay}`} key={j.kode}>
-                <div className="jurusan-img-wrap">
-                  
-                  <img className="jurusan-img" src={j.img} alt={j.nama} />
-                  <div className="jurusan-badge">{j.kode}</div>
-                </div>
-                <div className="jurusan-info">
-                  <div className="jurusan-name">{j.nama}</div>
-                  <div className="jurusan-desc">{j.desc}</div>
-                  <Link href={`/jurusan/${j.kode}`} className="jurusan-arrow">
-                    Selengkapnya →
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       
       <section className="alur" id="alur">

@@ -72,7 +72,7 @@ type JurusanFilter = "all" | string;
 type StatusFilter = "all" | "menunggu" | "diterima" | "ditolak";
 type SortOption = "newest" | "oldest" | "az" | "unverified";
 
-const JURUSAN_KODES = ["PPLG", "TKJ", "MPLB", "DKV", "MPC", "PH"] as const;
+const JURUSAN_KODES = ["PPLG", "TKJ", "MPLB", "DKV", "PM", "PH"] as const;
 const PAGE_SIZE = 20;
 const SKELETON_COUNT = 6;
 
