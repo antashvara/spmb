@@ -707,13 +707,13 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
       <li>
         <Link href="/#jurusan">
-          Program Keahlian
+          Jurusan
         </Link>
       </li>
 
       <li>
         <Link href="/#alur">
-          Alur Pendaftaran
+          Alur
         </Link>
       </li>
 
