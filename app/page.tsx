@@ -5,55 +5,11 @@ import { useEffect } from "react";
 import Link from "next/link";
 import LandingFooter from "@/components/landing/footer";
 import LandingNavbar from "@/components/landing/navbar";
-import StatsBlock from "@/components/landing/stats-block";
 import HeroStats from "@/components/landing/hero-stats";
 import VisionMission from "@/components/landing/vision-mission";
 import JurusanGrid from "@/components/landing/jurusan-grid";
+import RegistrationTimeline from "@/components/landing/registrationtimeline";
 
-const JURUSAN_LIST = [
-  {
-    kode: "PPLG",
-    nama: "Pengembangan Perangkant Lunak & Gim",
-    desc: "Belajar pengembangan aplikasi web, mobile, dan sistem perangkat lunak dengan stack industri terkini.",
-    img: "/jurusan/pplg.jpg",
-    delay: "",
-  },
-  {
-    kode: "TKJ",
-    nama: "Teknik Komputer & Jaringan",
-    desc: "Kuasai infrastruktur jaringan, keamanan siber, dan administrasi sistem. Siap kerja di bidang IT support dan network engineering.",
-    img: "/jurusan/tkj.jpg",
-    delay: "reveal-delay-1",
-  },
-  {
-    kode: "PM",
-    nama: "Pemasaran",
-    desc: "Kuasai strategi pemasaran digital, manajemen produk, dan teknik penjualan untuk dunia bisnis modern.",
-    img: "/jurusan/pm.jpeg",
-    delay: "reveal-delay-2",
-  },
-  {
-    kode: "DKV",
-    nama: "Desain Komunikasi Visual",
-    desc: "Kembangkan skill desain grafis, video production, dan konten kreatif untuk media digital.",
-    img: "/jurusan/dkv.jpg",
-    delay: "reveal-delay-3",
-  },
-  {
-    kode: "MPLB",
-    nama: "Manajemen Perkantoran & Layanan Bisnis",
-    desc: "Administrasi profesional, manajemen dokumen digital, dan layanan pelanggan standar industri.",
-    img: "/jurusan/mplb.jpg",
-    delay: "reveal-delay-1",
-  },
-  {
-    kode: "PH",
-    nama: "Perhotelan",
-    desc: "Siap berkarier di industri hospitality dengan pelatihan layanan hotel, front office, dan pariwisata.",
-    img: "/jurusan/phw.jpg",
-    delay: "reveal-delay-2",
-  },
-];
 
 export default function LandingPage() {
   useEffect(() => {
@@ -267,260 +223,7 @@ export default function LandingPage() {
             height:100%;
             object-fit:cover;
             pointer-events:none;
-          }
-       
-        .challenges { background: var(--bg-soft); padding: 120px 0; }
-        .challenges-inner {
-          display: grid; grid-template-columns: 1fr 1fr;
-          gap: 80px; align-items: center;
-        }
-        .challenges h2 { font-size: clamp(2rem,3.5vw,3rem); font-weight: 800; margin-bottom: 16px; }
-        .challenges-desc { color: var(--muted); line-height: 1.7; margin-bottom: 40px; font-size: 0.97rem; }
-        .challenge-card {
-          background: white; border: 1px solid var(--border);
-          border-radius: var(--radius); padding: 22px 24px;
-          margin-bottom: 14px; display: flex; align-items: flex-start; gap: 16px;
-          transition: box-shadow 0.25s ease, transform 0.25s ease;
-        }
-        .challenge-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
-        .challenge-icon {
-          width: 44px; height: 44px; border-radius: var(--radius-sm);
-          background: var(--accent-light);
-          display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .challenge-icon svg { width: 22px; height: 22px; color: var(--accent); }
-        .challenge-title { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1rem; margin-bottom:4px; letter-spacing:-0.01em; }
-        .challenge-text { font-size:0.85rem; color:var(--muted); line-height:1.55; }
-        .challenges-right { position: relative; }
-        .challenges-img { width:100%;height:500px;object-fit:cover;border-radius:20px;display:block; }
-        .stat-float {
-          position: absolute; bottom: 30px; left: -24px;
-          background: white; border-radius: var(--radius);
-          padding: 18px 22px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-        }
-        .stat-float .big { font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:var(--ink); }
-        .stat-float .lbl { font-size:0.8rem;color:var(--muted);margin-top:2px; }
-
-        
-        .jurusan { padding: 120px 0; }
-        .jurusan-header { margin-bottom: 60px; }
-        .jurusan h2 { font-size: clamp(2rem,3.5vw,3rem); font-weight: 800; }
-        .jurusan-item {
-          display: grid; grid-template-columns: 280px 1fr;
-          gap: 36px; align-items: center;
-          padding: 28px 0; border-bottom: 1px solid var(--border);
-          transition: background 0.25s ease; cursor: pointer; border-radius: var(--radius-sm);
-        }
-        .jurusan-item:first-child { border-top: 1px solid var(--border); }
-        .jurusan-item:hover { background:var(--bg-soft);padding-left:16px;padding-right:16px;margin:0 -16px; }
-        .jurusan-img-wrap { position: relative; flex-shrink: 0; }
-        .jurusan-img { width:100%;height:170px;object-fit:cover;border-radius:var(--radius);display:block; }
-        .jurusan-badge {
-          position: absolute; top: 12px; left: 12px;
-          background: var(--ink); color: white;
-          font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
-          text-transform: uppercase; padding: 5px 12px; border-radius: var(--radius-pill);
-        }
-        .jurusan-name { font-family:'Bricolage Grotesque',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px; }
-        .jurusan-desc { font-size:0.9rem;color:var(--muted);line-height:1.6;max-width:500px; }
-        .jurusan-arrow { margin-top:16px;display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:600;color:var(--accent);text-decoration:none; }
-        .jurusan-arrow:hover { text-decoration:underline; }
-
-        
-        .alur { padding: 120px 0; background: var(--bg); }
-        .alur-top { display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px;gap:40px; }
-        .alur-top-left { flex: 1; }
-        .alur h2 { font-size:clamp(2rem,3.5vw,3rem);font-weight:800; }
-        .alur-step {
-          display: grid; grid-template-columns: 80px 1px 1fr;
-          gap: 0 32px; align-items: start;
-          padding: 36px 0; border-bottom: 1px solid var(--border);
-        }
-        .alur-step:first-child { border-top: 1px solid var(--border); }
-        .step-num { font-family:'Bricolage Grotesque',sans-serif;font-size:3rem;font-weight:800;color:rgba(0,0,0,0.06);line-height:1;padding-top:4px; }
-        .step-divider { background:var(--border);width:1px;align-self:stretch;margin:4px 0; }
-        .step-content { padding-top: 4px; }
-        .step-title { font-family:'Bricolage Grotesque',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em; }
-        .step-desc { font-size:0.9rem;color:var(--muted);line-height:1.65;max-width:480px; }
-
-        
-        .stats { background: var(--ink-2,#1A1A1A); padding: 120px 0; }
-        .stats-label { color: rgba(255,255,255,0.5); }
-        .stats-label::before { background: var(--accent); }
-        .stats-layout {
-          display: grid; grid-template-columns: 1fr 1fr;
-          gap: 60px; align-items: start;
-        }
-        .stats-heading {
-          font-size: clamp(2rem,3.5vw,3rem);
-          color: white; font-weight: 800;
-          margin-bottom: 32px; max-width: 500px;
-        }
-        .stats-carousel { margin-top: 8px; }
-        .stats-carousel-frame {
-          position: relative; width: 100%;
-          aspect-ratio: 16 / 9; border-radius: 12px;
-          overflow: hidden; margin-bottom: 16px;
-        }
-        .stats-carousel-img {
-          width: 100%; height: 100%; object-fit: cover;
-          border-radius: 12px;
-          animation: statsImgFade 0.3s ease;
-        }
-        @keyframes statsImgFade {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        .stats-carousel-nav { display: flex; gap: 12px; }
-        .stats-carousel-btn {
-          width: 40px; height: 40px;
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 50%; background: transparent;
-          color: white; font-size: 1rem; cursor: pointer;
-          display: flex; align-items: center; justify-content: center;
-          transition: border-color 0.2s ease, background 0.2s ease;
-        }
-        .stats-carousel-btn:hover {
-          border-color: white;
-          background: rgba(255,255,255,0.1);
-        }
-        .stats-cards-grid {
-          display: grid; grid-template-columns: 1fr 1fr;
-          gap: 1px; background: var(--border-dark);
-        }
-        .stat-card {
-          padding: 40px; background: var(--ink-2,#1A1A1A);
-          border: 1px solid transparent;
-          text-align: left; position: relative;
-          transition: all 0.2s ease;
-        }
-        .stat-card-clickable {
-          cursor: pointer;
-        }
-        .stat-card-clickable:hover {
-          border-color: rgba(28,92,56,0.5);
-          transform: translateY(-2px);
-        }
-        .stat-card-static { cursor: default; }
-        .stat-card-icon {
-          position: absolute; top: 16px; right: 16px;
-          font-size: 0.75rem; color: rgba(255,255,255,0.35);
-        }
-        .stat-num { font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.8rem,5vw,4rem);font-weight:800;color:white;line-height:1;margin-bottom:12px; }
-        .stat-num span { color: var(--accent); }
-        .stat-lbl { font-size:0.85rem;color:rgba(255,255,255,0.45);font-weight:500;text-transform:uppercase;letter-spacing:0.06em; }
-        .stat-sublbl {
-          font-size: 0.72rem; color: rgba(255,255,255,0.3);
-          margin-top: 6px; text-transform: none; letter-spacing: 0;
-          font-weight: 400;
-        }
-        .stats-modal-overlay {
-          position: fixed; inset: 0; z-index: 100;
-          background: rgba(0,0,0,0.7);
-          backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-        }
-        .stats-modal-card {
-          position: fixed; top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          background: #1a1a1a;
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 16px; padding: 32px;
-          max-width: 480px; width: calc(100% - 40px);
-          animation: fadeUp 0.3s ease;
-        }
-        .stats-modal-close {
-          position: absolute; top: 16px; right: 16px;
-          background: none; border: none;
-          color: rgba(255,255,255,0.5);
-          font-size: 1.5rem; line-height: 1;
-          cursor: pointer; padding: 4px;
-          transition: color 0.2s ease;
-        }
-        .stats-modal-close:hover { color: white; }
-        .stats-modal-text {
-          color: rgba(255,255,255,0.75);
-          font-size: 0.92rem; line-height: 1.7;
-          padding-right: 24px;
-        }
-        .stats-modal-table {
-          width: 100%; border-collapse: collapse;
-          margin-bottom: 16px;
-        }
-        .stats-modal-table td {
-          padding: 10px 0;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-          color: rgba(255,255,255,0.85);
-          font-size: 0.9rem;
-        }
-        .stats-modal-table td:last-child {
-          text-align: right; color: var(--accent); font-weight: 600;
-        }
-        .stats-modal-note {
-          font-size: 0.78rem; color: rgba(255,255,255,0.4);
-        }
-        .stats-modal-mitra-grid {
-          list-style: none;
-          display: grid; grid-template-columns: 1fr 1fr;
-          gap: 12px 20px;
-          padding-right: 24px;
-        }
-        .stats-modal-mitra-grid li {
-          font-size: 0.88rem; color: rgba(255,255,255,0.8);
-        }
-
-        
-
-
-        
-        .cta-section { padding: 80px 0; background: var(--bg-soft); }
-        .cta-inner {
-          background: var(--ink-2,#1A1A1A); border-radius: 32px; padding: 80px;
-          display: grid; grid-template-columns: 1fr auto;
-          gap: 60px; align-items: center; position: relative; overflow: hidden;
-        }
-        .cta-inner::before {
-          content: ''; position: absolute; top: -80px; right: -80px;
-          width: 320px; height: 320px;
-          background: radial-gradient(circle, rgba(28,92,56,0.3) 0%, transparent 70%);
-          border-radius: 50%;
-        }
-        .cta-label { color: rgba(255,255,255,0.5); }
-        .cta-label::before { background: var(--accent); }
-        .cta-inner h2 { font-size:clamp(2.2rem,4vw,3.5rem);color:white;font-weight:800;margin-bottom:16px; }
-        .cta-inner p { color:rgba(255,255,255,0.6);line-height:1.65;max-width:440px;margin-bottom:36px; }
-        .cta-buttons { display:flex;gap:14px;flex-wrap:wrap; }
-        .btn-white {
-          display:inline-flex;align-items:center;gap:8px;
-          background:white;color:var(--ink);border:none;border-radius:var(--radius-pill);
-          padding:14px 28px;font-family:'Plus Jakarta Sans',sans-serif;
-          font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;
-          transition:all 0.25s ease;
-        }
-        .btn-white:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,0.2); }
-        .btn-cta-primary {
-          display:inline-flex;align-items:center;gap:8px;
-          background:#1C5C38;color:#fff;border:none;border-radius:var(--radius-pill);
-          padding:14px 28px;font-family:'Plus Jakarta Sans',sans-serif;
-          font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;
-          transition:all 0.25s ease;
-        }
-        .btn-cta-primary:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(28,92,56,0.35); }
-        .btn-cta-outline {
-          display:inline-flex;align-items:center;gap:8px;
-          background:transparent;color:#fff;
-          border:1.5px solid #1C5C38;border-radius:var(--radius-pill);
-          padding:14px 28px;font-family:'Plus Jakarta Sans',sans-serif;
-          font-weight:600;font-size:0.9rem;cursor:pointer;text-decoration:none;
-          transition:all 0.25s ease;
-        }
-        .btn-cta-outline:hover { transform:translateY(-2px);background:rgba(28,92,56,0.15); }
-        .cta-deco { position:relative;width:260px;height:280px;flex-shrink:0; }
-        .cta-deco img { width:240px;height:260px;object-fit:cover;border-radius:20px;border:3px solid rgba(255,255,255,0.1); }
-        .cta-deco-badge {
-          position:absolute;bottom:-10px;left:-20px;
-          background:var(--accent);color:white;border-radius:var(--radius);
-          padding:14px 18px;font-size:0.85rem;font-weight:700;
-        }
+          } 
 
         
         @media (max-width: 900px) {
@@ -534,16 +237,12 @@ export default function LandingPage() {
           .challenges-inner { grid-template-columns: 1fr; }
           .jurusan-item { grid-template-columns: 1fr; }
           .jurusan-img { height: 220px; }
-          .alur-top { flex-direction: column; align-items: flex-start; }
           .stats-layout { grid-template-columns: 1fr; gap: 48px; }
           .stats-cards-grid { grid-template-columns: repeat(2,1fr); }
-          .cta-inner { grid-template-columns: 1fr; padding: 48px; }
-          .cta-deco { display: none; }
         }
 
         @media (max-width: 600px) {
           .stats-cards-grid { grid-template-columns: 1fr 1fr; }
-          .alur-step { grid-template-columns: 60px 1px 1fr; gap: 0 20px; }
           .step-num { font-size: 2rem; }
           .hero-ctas { flex-direction: column; }
         }
@@ -1122,14 +821,222 @@ color:white;
   transform:translateX(4px);
 }
 
+.timeline-section{
+  padding:120px 0;
+  background:#f6faf7;
+  overflow:hidden;
 }
+
+.timeline-header{
+  text-align:center;
+  max-width:700px;
+  margin:auto auto 80px;
+}
+
+.timeline-header h2{
+  font-size:clamp(2rem,4vw,3rem);
+  margin:12px 0;
+  color:#10241b;
+}
+
+.timeline-header p{
+  color:#667085;
+  line-height:1.8;
+}
+
+.timeline-wrapper{
+  position:relative;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  gap:28px;
+}
+
+.timeline-line{
+
+  position:absolute;
+
+  top:38px;
+
+  left:12%;
+
+  right:12%;
+
+  height:4px;
+
+  background:linear-gradient(
+    90deg,
+    #20b26b,
+    #74d89d
+  );
+
+  border-radius:50px;
+
+  z-index:0;
+
+}
+
+.timeline-item{
+
+  position:relative;
+
+  z-index:2;
+
+  text-align:center;
+
+}
+
+.timeline-circle{
+
+  width:76px;
+
+  height:76px;
+
+  margin:auto;
+
+  border-radius:22px;
+
+  background:linear-gradient(
+    135deg,
+    #15b86b,
+    #42d392
+  );
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:white;
+
+  box-shadow:
+
+  0 20px 40px rgba(32,178,107,.25);
+
+  transition:.35s;
+
+}
+
+.timeline-item:hover .timeline-circle{
+
+  transform:
+
+  translateY(-8px)
+
+  rotate(-6deg)
+
+  scale(1.06);
+
+}
+
+.timeline-number{
+
+  display:block;
+
+  margin-top:18px;
+
+  color:#1ea86a;
+
+  font-weight:800;
+
+  letter-spacing:.15em;
+
+  font-size:.82rem;
+
+}
+
+.timeline-item h3{
+
+  margin-top:10px;
+
+  font-size:1.35rem;
+
+  color:#14261d;
+
+}
+
+.timeline-item p{
+
+  margin-top:10px;
+
+  color:#667085;
+
+  line-height:1.8;
+
+  font-size:.94rem;
+
+  max-width:230px;
+
+  margin-left:auto;
+
+  margin-right:auto;
+
+}
+
+@media(max-width:992px){
+
+.timeline-wrapper{
+
+grid-template-columns:1fr;
+
+gap:60px;
+
+}
+
+.timeline-line{
+
+display:none;
+
+}
+
+.timeline-item{
+
+text-align:left;
+
+padding-left:100px;
+
+}
+
+.timeline-circle{
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+margin:0;
+
+}
+
+.timeline-number{
+
+margin-top:0;
+
+}
+
+.timeline-item p{
+
+margin-left:0;
+
+margin-right:0;
+
+max-width:none;
+
+}
+
+}
+
+
 
 
 
       `}</style>
 
 
-      <section style={{ paddingTop: 0 }}>
+      <section id="hero" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="hero">
             <div className="hero-left">
@@ -1166,183 +1073,9 @@ color:white;
       </section>
 
       <HeroStats />
-
       <VisionMission />
-
       <JurusanGrid /> 
-
-      <section className="challenges">
-        <div className="container">
-          <div className="challenges-inner">
-            <div className="reveal">
-              <div className="section-label">Tantangan Nyata</div>
-              <h2>Masalah yang Sering Dihadapi Calon Siswa</h2>
-              <p className="challenges-desc">
-                Kami paham proses masuk sekolah bisa terasa membingungkan.
-                SMK Citra Negara hadir sebagai solusi lengkap untuk kamu.
-              </p>
-
-              <div className="challenge-card reveal reveal-delay-1">
-                <div className="challenge-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="challenge-title">Bingung pilih jurusan?</div>
-                  <div className="challenge-text">
-                    Kami punya 3 jurusan unggulan dengan jalur karier yang jelas.
-                    Konsultasi gratis tersedia untuk bantu kamu memilih.
-                  </div>
-                </div>
-              </div>
-
-              <div className="challenge-card reveal reveal-delay-2">
-                <div className="challenge-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="12" y1="1" x2="12" y2="23" />
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="challenge-title">Khawatir soal biaya?</div>
-                  <div className="challenge-text">
-                    Tersedia beasiswa prestasi dan program KIP-SMK untuk semua
-                    siswa yang memenuhi syarat.
-                  </div>
-                </div>
-              </div>
-
-              <div className="challenge-card reveal reveal-delay-3">
-                <div className="challenge-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="challenge-title">Proses daftar yang rumit?</div>
-                  <div className="challenge-text">
-                    Pendaftaran online 4 langkah simpel, dokumen digital, dan
-                    pantau status real-time dari HP kamu.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="challenges-right reveal">
-              
-              <img className="challenges-img"
-                src="/images/cn9.jpg"
-                alt="Siswa belajar" />
-              <div className="stat-float">
-                <div className="big">98%</div>
-                <div className="lbl">Tingkat Keterserapan Kerja</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-
-      
-      <section className="alur" id="alur">
-        <div className="container">
-          <div className="alur-top">
-            <div className="alur-top-left reveal">
-              <div className="section-label">Cara Daftar</div>
-              <h2>Alur Pendaftaran<br />yang Simpel & Cepat</h2>
-            </div>
-            <div className="reveal">
-              <Link href="/register" className="btn-primary">Mulai Daftar →</Link>
-            </div>
-          </div>
-
-          <div>
-            {[
-              {
-                num: "01",
-                title: "Registrasi Online",
-                desc: "Buat akun di portal kami dengan mudah tanpa biaya administrasi",
-                delay: "",
-              },
-              {
-                num: "02",
-                title: "Tes Bakat & Minat",
-                desc: "Ikuti asesmen kognitif dan praktis untuk menentukan jurusan terbaik",
-                delay: "reveal-delay-1",
-              },
-              {
-                num: "03",
-                title: "Wawancara Industri",
-                desc: "Sesi wawancara bersama praktisi industri untuk mengevaluasi motivasi",
-                delay: "reveal-delay-2",
-              },
-              {
-                num: "04",
-                title: "Pengumuman & Daftar Ulang",
-                desc: "Calon siswa diterima akan mendapatkan notifikasi resmi",
-                delay: "reveal-delay-3",
-              },
-            ].map((s) => (
-              <div className={`alur-step reveal ${s.delay}`} key={s.num}>
-                <div className="step-num">{s.num}</div>
-                <div className="step-divider" />
-                <div className="step-content">
-                  <div className="step-title">{s.title}</div>
-                  <div className="step-desc">{s.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      
-      <section className="stats" id="tentang">
-        <div className="container">
-          <StatsBlock />
-        </div>
-      </section>
-      
-      <section className="cta-section" id="kontak">
-        <div className="container">
-          <div className="cta-inner">
-            <div className="reveal">
-              <div className="section-label cta-label">Siap Mulai?</div>
-              <h2>Siap Jadi Bagian Dari Masa Depan Digital?</h2>
-              <p>
-                Jangan tunda lagi. Kuota terbatas setiap tahunnya. Daftar sekarang
-                dan jadilah bagian dari generasi digital yang siap kerja.
-              </p>
-              <div className="cta-buttons">
-                <Link href="/register" className="btn-cta-primary">Daftar Sekarang Juga</Link>
-                <a
-                  href="https://wa.me/622177201052"
-                  className="btn-cta-outline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Hubungi Tim Admission
-                </a>
-              </div>
-            </div>
-            <div className="cta-deco reveal">
-              <img
-                src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=520&h=520&fit=crop&q=80"
-                alt="Siswa SMK Citra Negara"
-              />
-              <div className="cta-deco-badge">✓ Pendaftaran Dibuka</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <RegistrationTimeline />
       <LandingFooter />
 
     </>

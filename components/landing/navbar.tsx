@@ -46,199 +46,399 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
   return (
     <>
       <style>{`
-        .ln-nav{
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
+/* =========================
+   NAVBAR
+========================= */
 
-          background: rgba(255,255,255,.94);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
+.ln-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
 
-          border-bottom: 1px solid rgba(0,0,0,.05);
-        }
-        .ln-nav.scrolled {
-          background: rgba(240,248,244,0.92);
-          border-bottom: 1px solid rgba(196,224,209,0.6);
-        }
-        .ln-nav-inner{
-          max-width: 1280px;
-          margin: 0 auto;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
 
-          padding: 14px 32px;
+  border-bottom:1px solid rgba(0,0,0,.05);
+  transition:.35s ease;
+}
 
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+.ln-nav.scrolled{
+  background:rgba(255,255,255,.95);
+  box-shadow:0 8px 28px rgba(0,0,0,.06);
+}
 
-          gap: 24px;
-        }
-        .ln-logo{
-          display: flex;
-          align-items: center;
-          gap: 14px;
+.ln-nav-inner{
 
-          text-decoration: none;
+  max-width:1280px;
 
-          font-size: 1.9rem;
-          font-weight: 800;
+  margin:auto;
 
-          color: #089043;
-        }
-        .ln-logo span{
-            color: #089043;
-          }
-        .ln-logo-img{
-          width: 64px;
-          height: 64px;
-          object-fit: contain;
-        }
-        .ln-links{
-          display: flex;
-          align-items: center;
-          gap: 14px;
+  height:88px;
 
-          list-style: none;
+  display:flex;
 
-          margin: 0 auto;
-          padding: 0;
-        }
-        .ln-links a{
-          text-decoration: none;
+  align-items:center;
 
-          color: #374151;
+  justify-content:space-between;
 
-          font-size: .95rem;
-          font-weight: 600;
+  gap:40px;
 
-          background: #F4F4F4;
+  padding:0 32px;
 
-          padding: 14px 24px;
+}
 
-          border-radius: 18px;
+/* =========================
+   LOGO
+========================= */
 
-          transition: all .25s ease;
-        }
-        .ln-links a:hover{
-          background: #FFFFFF;
+.ln-logo{
 
-          color: #089043;
+  display:flex;
 
-          transform: translateY(-2px);
+  align-items:center;
 
-          box-shadow:
-            0 8px 24px rgba(0,0,0,.08);
-        }
-        .ln-links a.active{
-          background: #FFFFFF;
+  gap:14px;
 
-          color: #089043;
+  text-decoration:none;
 
-          box-shadow:
-            0 8px 24px rgba(0,0,0,.08);
-        }
-        .ln-cta {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: #0C0C0C; color: #fff;
-          border: none; border-radius: 9999px;
-          padding: 12px 22px; font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 0.85rem; font-weight: 600;
-          cursor: pointer; text-decoration: none;
-          transition: all 0.25s ease; flex-shrink: 0;
-        }
-        .ln-cta:hover { transform: translateY(-1px); background: #222; }
-        .ln-avatar{
-          width: 46px;
-          height: 46px;
+  flex-shrink:0;
 
-          border-radius: 50%;
+}
 
-          background: linear-gradient(
-            135deg,
-            #0A8F44,
-            #12C769
-          );
+.ln-logo-img{
 
-          color: white;
+  width:56px;
 
-          border: none;
+  height:56px;
 
-          font-size: 15px;
-          font-weight: 700;
+  object-fit:contain;
 
-          cursor: pointer;
+}
 
-          box-shadow:
-            0 8px 24px rgba(10,143,68,.25);
+.ln-logo span{
 
-          transition: .25s;
-        }
-          .ln-avatar:hover{
-          transform: translateY(-2px);
-        }
-        .ln-dropdown{
-          position: absolute;
+  font-size:18px;
 
-          right: 0;
-          top: calc(100% + 10px);
+  font-weight:800;
 
-          background: rgba(255,255,255,.95);
+  line-height:1.15;
 
-          backdrop-filter: blur(18px);
+  color:#1C5C38;
 
-          border-radius: 18px;
+}
 
-          border: 1px solid rgba(0,0,0,.06);
+/* =========================
+   MENU
+========================= */
 
-          box-shadow:
-            0 16px 40px rgba(0,0,0,.12);
+.ln-links{
 
-          min-width: 240px;
+  flex:1;
 
-          overflow: hidden;
+  display:flex;
 
-          z-index: 50;
-        }
-        .ln-dropdown-item {
-          display: flex; align-items: center; gap: 10px;
-          padding: 10px 16px; font-size: 13px; color: #374151;
-          text-decoration: none; cursor: pointer;
-          background: none; border: none; width: 100%; text-align: left;
-          font-family: 'Plus Jakarta Sans', sans-serif;
-          transition: background 0.15s;
-        }
-        .ln-dropdown-item:hover { background: #F9FAFB; }
-        .ln-dropdown-item.danger { color: #DC2626; }
-        .ln-dropdown-item.danger:hover { background: #FEF2F2; }
-        @keyframes ln-fadeUp {
-          from { opacity: 0; transform: translateY(-8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes ln-fadeDown {
-          from { opacity: 1; transform: translateY(0); }
-          to { opacity: 0; transform: translateY(-8px); }
-        }
-          @media (max-width: 992px){
-        .ln-links{
-          gap: 8px;
-        }
+  justify-content:center;
 
-        .ln-links a{
-          padding: 12px 18px;
-          font-size: .85rem;
-        }
+  align-items:center;
 
-        .ln-logo{
-          font-size: 1.4rem;
-        }
+  gap:10px;
 
-        .ln-logo-img{
-          width: 52px;
-          height: 52px;
-        }
-      }
+  list-style:none;
+
+  margin:0;
+
+  padding:0;
+
+}
+
+.ln-links li{
+
+  list-style:none;
+
+}
+
+.ln-links a{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:12px 18px;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  color:#475569;
+
+  font-size:.95rem;
+
+  font-weight:700;
+
+  transition:.3s;
+
+}
+
+.ln-links a:hover{
+
+  color:#1C5C38;
+
+  background:rgba(28,92,56,.06);
+
+}
+
+/* active tidak dibuat background */
+
+.ln-links a.active{
+
+  color:#1C5C38;
+
+}
+
+/* =========================
+   ACTION
+========================= */
+
+.ln-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  flex-shrink:0;
+
+}
+
+.ln-login{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:12px 26px;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  font-size:.92rem;
+
+  color:#1C5C38;
+
+  background:#F4F8F5;
+
+  border:1px solid #DCE9DF;
+
+  transition:.3s;
+
+}
+
+.ln-login:hover{
+
+  background:#1C5C38;
+
+  color:white;
+
+}
+
+.ln-cta{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:12px 28px;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  font-size:.92rem;
+
+  color:white;
+
+  background:linear-gradient(
+    135deg,
+    #1C5C38,
+    #2DAA69
+  );
+
+  box-shadow:
+
+    0 12px 30px rgba(45,170,105,.22);
+
+  transition:.3s;
+
+}
+
+.ln-cta:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+
+    0 18px 42px rgba(45,170,105,.3);
+
+}
+
+/* =========================
+   AVATAR
+========================= */
+
+.ln-avatar{
+
+  width:46px;
+
+  height:46px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:linear-gradient(
+    135deg,
+    #1C5C38,
+    #2DAA69
+  );
+
+  color:white;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.ln-dropdown{
+
+  position:absolute;
+
+  right:0;
+
+  top:calc(100% + 10px);
+
+  width:240px;
+
+  background:white;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  box-shadow:
+
+    0 18px 45px rgba(0,0,0,.12);
+
+  border:1px solid rgba(0,0,0,.05);
+
+}
+
+.ln-dropdown-item{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:12px 18px;
+
+  text-decoration:none;
+
+  color:#374151;
+
+  transition:.2s;
+
+}
+
+.ln-dropdown-item:hover{
+
+  background:#F8FAF9;
+
+}
+
+.ln-dropdown-item.danger{
+
+  color:#DC2626;
+
+}
+
+.ln-dropdown-item.danger:hover{
+
+  background:#FEF2F2;
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:992px){
+
+  .ln-nav-inner{
+
+    padding:0 18px;
+
+    height:78px;
+
+  }
+
+  .ln-logo-img{
+
+    width:46px;
+
+    height:46px;
+
+  }
+
+  .ln-logo span{
+
+    font-size:16px;
+
+  }
+
+  .ln-links{
+
+    display:none;
+
+  }
+
+  .ln-login{
+
+    padding:10px 18px;
+
+    font-size:.85rem;
+
+  }
+
+  .ln-cta{
+
+    padding:10px 20px;
+
+    font-size:.85rem;
+
+  }
+
+}
       `}</style>
 
       <nav className={`ln-nav${scrolled ? " scrolled" : ""}`}>
@@ -250,7 +450,7 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
           </Link>
           <ul className="ln-links">
             <li>
-              <Link href="/" className={activePage === "beranda" ? "active" : ""}>
+              <Link href="/#hero" className={activePage === "beranda" ? "active" : ""}>
                 Beranda
               </Link>
             </li>
@@ -262,7 +462,7 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
             </li>
 
             <li>
-              <Link href="/pendaftaran">
+              <Link href="/#alur">
                 Alur Pendaftaran
               </Link>
             </li>
@@ -333,7 +533,15 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
                 )}
               </>
             ) : (
-              <Link href="/register" className="ln-cta">Daftar Sekarang</Link>
+              <div className="ln-actions">
+              <Link href="/login" className="ln-login">
+                Login
+              </Link>
+
+              <Link href="/register" className="ln-cta">
+                Daftar Sekarang →
+              </Link>
+            </div>
             )}
           </div>
         </div>
