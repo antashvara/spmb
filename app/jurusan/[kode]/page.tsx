@@ -91,7 +91,7 @@ const JURUSAN_EXTRA: Record<string, JurusanExtra> = {
     ],
     sertifikasi: "Graphic Design · Digital Media Production",
   },
-  MPC: {
+  PM: {
     tentang:
       "Program Multimedia dan Produksi Konten membekali siswa menghasilkan konten kreatif berkualitas — video, foto, audio, dan strategi distribusi digital untuk berbagai platform.",
     keahlian: [
@@ -517,11 +517,20 @@ export default function JurusanDetailPage() {
                       Daftar Sekarang →
                     </Link>
                   </div>
-                  {({"DKV":"/jurusan/dkv.jpg","TKJ":"/jurusan/tkj.jpg","PPLG":"/jurusan/pplg.jpg","PHW":"/jurusan/phw.jpg","MPLB":"/jurusan/mplb.jpg", "PM":"/jurusan/pm.jpg"} as Record<string,string>)[jurusan.kode] && (
+                  {({"DKV":"/jurusan/dkv.jpg","TKJ":"/jurusan/tkj.jpg","PPLG":"/jurusan/pplg.jpg","PH":"/jurusan/ph.jpg","MPLB":"/jurusan/mplb.jpg", "PM":"/jurusan/pm.jpg"} as Record<string,string>)[jurusan.kode] && (
                     <div className="jd-hero-photo">
                       {}
                       <img
-                        src={({"DKV":"/jurusan/dkv.jpg","TKJ":"/jurusan/tkj.jpg","PPLG":"/jurusan/pplg.jpg","PHW":"/jurusan/phw.jpg","MPLB":"/jurusan/mplb.jpg"} as Record<string,string>)[jurusan.kode]}
+                        src={
+  ({
+    "DKV":"/jurusan/dkv.jpg",
+    "TKJ":"/jurusan/tkj.jpg",
+    "PPLG":"/jurusan/pplg.jpg",
+    "PH":"/jurusan/ph.jpg",
+    "MPLB":"/jurusan/mplb.jpg",
+    "PM":"/jurusan/pm.jpg"
+  } as Record<string,string>)[jurusan.kode]
+}
                         alt={`Siswa ${jurusan.kode} SMK Citra Negara`}
                       />
                     </div>
