@@ -46,29 +46,35 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
   return (
     <>
       <style>{`
-/* =========================
+/* ===========================
    NAVBAR
-========================= */
+=========================== */
 
 .ln-nav{
   position:fixed;
   top:0;
   left:0;
   right:0;
-  z-index:1000;
+  z-index:999;
 
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
 
   border-bottom:1px solid rgba(0,0,0,.05);
+
   transition:.35s ease;
 }
 
 .ln-nav.scrolled{
-  background:rgba(255,255,255,.95);
-  box-shadow:0 8px 28px rgba(0,0,0,.06);
+  background:rgba(255,255,255,.92);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.05);
 }
+
+/* ===========================
+   CONTAINER
+=========================== */
 
 .ln-nav-inner{
 
@@ -78,6 +84,8 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   height:88px;
 
+  padding:0 34px;
+
   display:flex;
 
   align-items:center;
@@ -86,71 +94,95 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   gap:40px;
 
-  padding:0 32px;
-
 }
 
-/* =========================
+/* ===========================
    LOGO
-========================= */
+=========================== */
 
 .ln-logo{
-
   display:flex;
-
   align-items:center;
-
   gap:14px;
 
   text-decoration:none;
-
   flex-shrink:0;
-
 }
 
 .ln-logo-img{
-
-  width:56px;
-
-  height:56px;
-
+  width:58px;
+  height:58px;
   object-fit:contain;
-
 }
 
-.ln-logo span{
-
-  font-size:18px;
-
-  font-weight:800;
-
-  line-height:1.15;
+.ln-logo-text{
 
   color:#1C5C38;
 
+  font-size:1.85rem;
+
+  font-weight:800;
+
+  letter-spacing:-0.03em;
+
+  white-space:nowrap;
+
+  transition:.3s;
 }
 
-/* =========================
+.ln-logo:hover .ln-logo-text{
+
+  transform:translateX(2px);
+
+}
+
+.ln-logo-small{
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:#4B5563;
+
+}
+
+.ln-logo-big{
+
+  font-size:28px;
+
+  font-weight:800;
+
+  color:#1C5C38;
+
+  letter-spacing:-0.03em;
+
+}
+
+/* ===========================
    MENU
-========================= */
+=========================== */
 
 .ln-links{
 
-  flex:1;
-
   display:flex;
-
-  justify-content:center;
 
   align-items:center;
 
-  gap:10px;
+  gap:8px;
 
   list-style:none;
 
-  margin:0;
+  margin:0 auto;
 
-  padding:0;
+  padding:8px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.55);
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(28,92,56,.08);
 
 }
 
@@ -162,6 +194,8 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
 .ln-links a{
 
+  position:relative;
+
   display:flex;
 
   align-items:center;
@@ -172,15 +206,41 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   border-radius:999px;
 
+  color:#4B5563;
+
   text-decoration:none;
-
-  color:#475569;
-
-  font-size:.95rem;
 
   font-weight:700;
 
-  transition:.3s;
+  font-size:.93rem;
+
+  overflow:hidden;
+
+  transition:.35s;
+
+}
+
+.ln-links a::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+
+  bottom:5px;
+
+  width:0;
+
+  height:2px;
+
+  background:#1C5C38;
+
+  transform:translateX(-50%);
+
+  transition:.35s;
+
+  border-radius:999px;
 
 }
 
@@ -188,11 +248,13 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   color:#1C5C38;
 
-  background:rgba(28,92,56,.06);
-
 }
 
-/* active tidak dibuat background */
+.ln-links a:hover::after{
+
+  width:70%;
+
+}
 
 .ln-links a.active{
 
@@ -200,9 +262,15 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
 }
 
-/* =========================
-   ACTION
-========================= */
+.ln-links a.active::after{
+
+  width:70%;
+
+}
+
+/* ===========================
+   ACTIONS
+=========================== */
 
 .ln-actions{
 
@@ -216,6 +284,8 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
 }
 
+/* LOGIN */
+
 .ln-login{
 
   display:flex;
@@ -224,23 +294,23 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   justify-content:center;
 
+  text-decoration:none;
+
   padding:12px 26px;
 
   border-radius:999px;
 
-  text-decoration:none;
+  font-size:.92rem;
 
   font-weight:700;
 
-  font-size:.92rem;
-
   color:#1C5C38;
 
-  background:#F4F8F5;
+  background:rgba(28,92,56,.05);
 
-  border:1px solid #DCE9DF;
+  border:1px solid rgba(28,92,56,.12);
 
-  transition:.3s;
+  transition:.35s;
 
 }
 
@@ -250,7 +320,11 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   color:white;
 
+  transform:translateY(-2px);
+
 }
+
+/* CTA */
 
 .ln-cta{
 
@@ -260,29 +334,37 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   justify-content:center;
 
-  padding:12px 28px;
-
-  border-radius:999px;
+  gap:8px;
 
   text-decoration:none;
 
-  font-weight:700;
+  padding:12px 30px;
+
+  border-radius:999px;
 
   font-size:.92rem;
 
+  font-weight:700;
+
   color:white;
 
-  background:linear-gradient(
+  background:
+
+  linear-gradient(
+
     135deg,
+
     #1C5C38,
+
     #2DAA69
+
   );
+
+  transition:.35s;
 
   box-shadow:
 
-    0 12px 30px rgba(45,170,105,.22);
-
-  transition:.3s;
+    0 14px 35px rgba(45,170,105,.25);
 
 }
 
@@ -290,15 +372,17 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   transform:translateY(-2px);
 
+  filter:brightness(1.05);
+
   box-shadow:
 
-    0 18px 42px rgba(45,170,105,.3);
+    0 20px 42px rgba(45,170,105,.35);
 
 }
 
-/* =========================
+/* ===========================
    AVATAR
-========================= */
+=========================== */
 
 .ln-avatar{
 
@@ -310,10 +394,16 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   border-radius:50%;
 
-  background:linear-gradient(
+  background:
+
+  linear-gradient(
+
     135deg,
+
     #1C5C38,
+
     #2DAA69
+
   );
 
   color:white;
@@ -322,33 +412,43 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   cursor:pointer;
 
+  transition:.3s;
+
 }
 
-/* =========================
+.ln-avatar:hover{
+
+  transform:translateY(-2px);
+
+}
+
+/* ===========================
    DROPDOWN
-========================= */
+=========================== */
 
 .ln-dropdown{
 
   position:absolute;
 
-  right:0;
-
   top:calc(100% + 10px);
+
+  right:0;
 
   width:240px;
 
-  background:white;
+  overflow:hidden;
 
   border-radius:18px;
 
-  overflow:hidden;
+  background:rgba(255,255,255,.96);
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(0,0,0,.05);
 
   box-shadow:
 
-    0 18px 45px rgba(0,0,0,.12);
-
-  border:1px solid rgba(0,0,0,.05);
+    0 20px 45px rgba(0,0,0,.12);
 
 }
 
@@ -360,7 +460,13 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
   gap:10px;
 
-  padding:12px 18px;
+  width:100%;
+
+  padding:13px 18px;
+
+  background:none;
+
+  border:none;
 
   text-decoration:none;
 
@@ -372,7 +478,7 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
 .ln-dropdown-item:hover{
 
-  background:#F8FAF9;
+  background:#F6FAF7;
 
 }
 
@@ -388,31 +494,37 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
 }
 
-/* =========================
+/* ===========================
    MOBILE
-========================= */
+=========================== */
 
-@media (max-width:992px){
+@media(max-width:992px){
 
   .ln-nav-inner{
 
-    padding:0 18px;
+    height:76px;
 
-    height:78px;
+    padding:0 18px;
 
   }
 
   .ln-logo-img{
 
-    width:46px;
+    width:44px;
 
-    height:46px;
+    height:44px;
 
   }
 
-  .ln-logo span{
+  .ln-logo-small{
 
-    font-size:16px;
+    font-size:12px;
+
+  }
+
+  .ln-logo-big{
+
+    font-size:21px;
 
   }
 
@@ -426,126 +538,332 @@ export default function LandingNavbar({ activePage }: LandingNavbarProps) {
 
     padding:10px 18px;
 
-    font-size:.85rem;
+    font-size:.82rem;
 
   }
 
   .ln-cta{
 
-    padding:10px 20px;
+    padding:10px 18px;
 
-    font-size:.85rem;
+    font-size:.82rem;
 
   }
+
+/* ===== LOGO TEXT ===== */
+
+.ln-logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-shrink:0;
+}
+
+.ln-logo-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+}
+
+.ln-logo-top{
+  font-size:0.9rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:#4B5563;
+}
+
+.ln-logo-bottom{
+  margin-top:2px;
+  font-size:1.75rem;
+  font-weight:800;
+  color:#1C5C38;
+  letter-spacing:-.03em;
+  white-space:nowrap;
+}
+
+/* ===== MENU EFFECT ===== */
+
+.ln-links a{
+  position:relative;
+  overflow:hidden;
+}
+
+.ln-links a::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border-radius:999px;
+
+  background:linear-gradient(
+    135deg,
+    #1C5C38,
+    #32B36F
+  );
+
+  opacity:0;
+
+  transform:scale(.7);
+
+  transition:.35s;
+
+  z-index:-1;
+
+}
+
+.ln-links a:hover::before{
+
+  opacity:1;
+
+  transform:scale(1);
+
+}
+
+.ln-links a:hover{
+
+  color:white;
+
+  transform:translateY(-2px);
+
+}
+
+/* ===== ACTIVE ===== */
+
+.ln-links a.active{
+
+  background:linear-gradient(
+    135deg,
+    #1C5C38,
+    #2DAA69
+  );
+
+  color:white;
+
+  box-shadow:
+    0 10px 24px rgba(45,170,105,.28);
+
+    transform:scale(.96);
+
+}
+
+.ln-links a.active::before{
+  width:60%;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+  .ln-logo-bottom{
+    font-size:1.2rem;
+  }
+
+  .ln-logo-top{
+    font-size:.75rem;
+  }
+
+}
 
 }
       `}</style>
 
-      <nav className={`ln-nav${scrolled ? " scrolled" : ""}`}>
-        <div className="ln-nav-inner">
-          <Link href="/" className="ln-logo">
-            {}
-            <img src="/images/logo-cn.png" alt="Logo SMK Citra Negara" className="ln-logo-img"/>
-            SMK<span>Citra Negara</span>
-          </Link>
-          <ul className="ln-links">
-            <li>
-              <Link href="/#hero" className={activePage === "beranda" ? "active" : ""}>
-                Beranda
-              </Link>
-            </li>
 
-            <li>
-              <Link href="/#jurusan">
-                Program Keahlian
-              </Link>
-            </li>
+<nav className={`ln-nav${scrolled ? " scrolled" : ""}`}>
+  <div className="ln-nav-inner">
 
-            <li>
-              <Link href="/#alur">
-                Alur Pendaftaran
-              </Link>
-            </li>
+    {/* ================= LOGO ================= */}
 
-            <li>
-              <Link href="/#footer">
-                FAQ
-              </Link>
-            </li>
-          </ul>
-          <div style={{ position: "relative", flexShrink: 0 }}>
-            {navUser ? (
-              <>
-                <button
-                  className="ln-avatar"
-                  onClick={() => dropdownOpen ? closeDropdown() : setDropdownOpen(true)}
+    <Link href="/" className="ln-logo">
+
+      <img
+        src="/images/logo-cn.png"
+        alt="SMK Citra Negara"
+        className="ln-logo-img"
+      />
+
+      <div className="ln-logo-text">
+        <span className="ln-logo-top">
+          SMK Citra Negara
+        </span>
+      </div>
+
+    </Link>
+
+    {/* ================= MENU ================= */}
+
+    <ul className="ln-links">
+
+      <li>
+        <Link
+          href="/#hero"
+          className={activePage === "beranda" ? "active" : ""}
+        >
+          Beranda
+        </Link>
+      </li>
+
+      <li>
+        <Link href="/#jurusan">
+          Program Keahlian
+        </Link>
+      </li>
+
+      <li>
+        <Link href="/#alur">
+          Alur Pendaftaran
+        </Link>
+      </li>
+
+      <li>
+        <Link href="/#faq">
+          FAQ
+        </Link>
+      </li>
+
+    </ul>
+
+    {/* ================= RIGHT SIDE ================= */}
+
+    <div
+      style={{
+        position: "relative",
+        flexShrink: 0,
+      }}
+    >
+
+      {navUser ? (
+        <>
+
+          <button
+            className="ln-avatar"
+            onClick={() =>
+              dropdownOpen
+                ? closeDropdown()
+                : setDropdownOpen(true)
+            }
+          >
+            {navUser.name.charAt(0).toUpperCase()}
+          </button>
+
+          {dropdownOpen && (
+            <>
+              <div
+                onClick={closeDropdown}
+                style={{
+                  position: "fixed",
+                  inset: 0,
+                  zIndex: 40,
+                }}
+              />
+
+              <div
+                className="ln-dropdown"
+                style={{
+                  animation: dropdownClosing
+                    ? "ln-fadeDown .18s ease forwards"
+                    : "ln-fadeUp .2s ease",
+                }}
+              >
+
+                <div
+                  style={{
+                    padding: "14px 18px",
+                    borderBottom: "1px solid #edf2ef",
+                  }}
                 >
-                  {navUser.name.charAt(0).toUpperCase()}
-                </button>
-                {dropdownOpen && (
-                  <>
-                    <div
-                      onClick={closeDropdown}
-                      style={{ position: "fixed", inset: 0, zIndex: 40 }}
-                    />
-                    <div
-                      className="ln-dropdown"
-                      style={{
-                        animation: dropdownClosing
-                          ? "ln-fadeDown 0.18s ease forwards"
-                          : "ln-fadeUp 0.2s ease",
-                      }}
-                    >
-                      <div style={{ padding: "12px 16px", borderBottom: "1px solid #F3F4F6", background: "#F9FAFB" }}>
-                        <div style={{ fontSize: 13, fontWeight: 600, color: "#0C0C0C" }}>{navUser.name}</div>
-                        <div style={{ fontSize: 11, color: "#6B7280", marginTop: 2 }}>
-                          {navUser.role === "admin" ? "Administrator" : "Pendaftar"}
-                        </div>
-                      </div>
-                      <div style={{ padding: "6px 0" }}>
-                        <Link href="/hasil-seleksi" className="ln-dropdown-item">Hasil Seleksi</Link>
-                        <div className="ln-dropdown-item" style={{ color: "#9CA3AF", cursor: "not-allowed" }}>
-                          <span style={{ position: "relative" }}>
-                            💳
-                            <span style={{ position: "absolute", top: -4, right: -4, width: 8, height: 8, borderRadius: "50%", background: "#DC2626", border: "1.5px solid white" }} />
-                          </span>
-                          Pembayaran
-                          <span style={{ marginLeft: "auto", fontSize: 10, fontWeight: 600, background: "#FEF3C7", color: "#92400E", padding: "2px 6px", borderRadius: 9999 }}>Segera</span>
-                        </div>
-                        <Link href={navUser.role === "admin" ? "/dashboard/profile" : "/pendaftaran"} className="ln-dropdown-item">
-                          👤 {navUser.role === "admin" ? "Dashboard" : "Pendaftaran Saya"}
-                        </Link>
-                        <div style={{ height: 1, background: "#F3F4F6", margin: "4px 0" }} />
-                        <button
-                          className="ln-dropdown-item danger"
-                          onClick={async () => {
-                            await fetch("/api/auth/logout", { method: "POST" });
-                            setNavUser(null);
-                            closeDropdown();
-                            window.location.href = "/login";
-                          }}
-                        >
-                          🚪 Keluar
-                        </button>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </>
-            ) : (
-              <div className="ln-actions">
-              <Link href="/login" className="ln-login">
-                Login
-              </Link>
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      color: "#1C5C38",
+                    }}
+                  >
+                    {navUser.name}
+                  </div>
 
-              <Link href="/register" className="ln-cta">
-                Daftar Sekarang →
-              </Link>
-            </div>
-            )}
-          </div>
+                  <div
+                    style={{
+                      fontSize: 12,
+                      color: "#6B7280",
+                    }}
+                  >
+                    {navUser.role === "admin"
+                      ? "Administrator"
+                      : "Pendaftar"}
+                  </div>
+                </div>
+
+                <Link
+                  href="/hasil-seleksi"
+                  className="ln-dropdown-item"
+                >
+                  Hasil Seleksi
+                </Link>
+
+                <Link
+                  href={
+                    navUser.role === "admin"
+                      ? "/dashboard/profile"
+                      : "/pendaftaran"
+                  }
+                  className="ln-dropdown-item"
+                >
+                  {navUser.role === "admin"
+                    ? "Dashboard"
+                    : "Pendaftaran Saya"}
+                </Link>
+
+                <button
+                  className="ln-dropdown-item danger"
+                  onClick={async () => {
+                    await fetch("/api/auth/logout", {
+                      method: "POST",
+                    });
+
+                    setNavUser(null);
+
+                    closeDropdown();
+
+                    window.location.href = "/login";
+                  }}
+                >
+                  Keluar
+                </button>
+
+              </div>
+            </>
+          )}
+
+        </>
+      ) : (
+
+        <div className="ln-actions">
+
+          <Link
+            href="/login"
+            className="ln-login"
+          >
+            Login
+          </Link>
+
+          <Link
+            href="/register"
+            className="ln-cta"
+          >
+            Daftar Sekarang →
+          </Link>
+
         </div>
-      </nav>
+
+      )}
+
+    </div>
+
+  </div>
+</nav>
+
     </>
   );
 }
