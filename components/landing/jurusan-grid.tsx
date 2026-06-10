@@ -54,7 +54,7 @@ const jurusan = [
 
 export default function JurusanGrid() {
   return (
-    <section className="jurusan-modern">
+    <section id="jurusan" className="jurusan-modern">
 
       <div className="container">
 

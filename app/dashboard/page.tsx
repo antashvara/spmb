@@ -554,13 +554,6 @@ export default function DashboardPage() {
         </div>
 
         <section className="panel" data-animate data-delay="100">
-          <div className="panel-header">
-            <h3>Histori Login Terkini</h3>
-            <span className="live-badge">
-              <span className="live-dot" aria-hidden="true" />
-              LIVE · {lastUpdatedStr}
-            </span>
-          </div>
 
           {loading ? (
             <div className="loading-state" data-animate data-delay="0">

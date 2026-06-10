@@ -12,47 +12,142 @@ export default function LandingFooter() {
   return (
     <>
       <style>{`
-        .landing-footer {
-          background: #0c1a10;
-          padding: 60px 80px 32px;
-          color: #fff;
-          font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        .landing-footer{
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at top left,
+      rgba(30,180,110,.15),
+      transparent 35%),
+
+    radial-gradient(circle at bottom right,
+      rgba(0,120,255,.08),
+      transparent 35%),
+
+    linear-gradient(
+      180deg,
+      #102017,
+      #08110d
+    );
+
+  padding:90px 80px 32px;
+  color:#fff;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+
+.landing-footer::before{
+
+content:"";
+
+position:absolute;
+
+width:340px;
+
+height:340px;
+
+border-radius:50%;
+
+background:#20b26b;
+
+filter:blur(180px);
+
+opacity:.12;
+
+left:-120px;
+
+top:-120px;
+
+pointer-events:none;
+
+}
+
+.landing-footer::after{
+
+content:"";
+
+position:absolute;
+
+width:280px;
+
+height:280px;
+
+border-radius:50%;
+
+background:#2ec5ff;
+
+filter:blur(180px);
+
+opacity:.08;
+
+right:-100px;
+
+bottom:-120px;
+
+pointer-events:none;
+
+}
 
         .landing-footer-inner {
           max-width: 1200px;
           margin: 0 auto;
         }
 
-        .landing-footer-grid {
-          display: grid;
-          grid-template-columns: 1.4fr 1fr 1fr 1fr;
-          gap: 48px;
-          padding-bottom: 48px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          margin-bottom: 28px;
-        }
+.landing-footer-grid{
 
-        .landing-footer-logo {
-          font-family: 'Bricolage Grotesque', sans-serif;
-          font-weight: 800;
-          font-size: 1.15rem;
-          color: #fff;
-          letter-spacing: -0.02em;
-          margin-bottom: 14px;
-        }
+display:grid;
 
-        .landing-footer-logo span {
-          color: #1c5c38;
-        }
+grid-template-columns:
 
-        .landing-footer-tagline {
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.5);
-          line-height: 1.65;
-          max-width: 300px;
-          margin-bottom: 20px;
-        }
+1.8fr 1fr 1fr 1.2fr;
+
+gap:60px;
+
+padding-bottom:50px;
+
+border-bottom:
+
+1px solid rgba(255,255,255,.08);
+
+position:relative;
+
+z-index:2;
+
+}
+
+        .landing-footer-logo{
+
+font-family:'Bricolage Grotesque',sans-serif;
+
+font-size:2rem;
+
+font-weight:800;
+
+letter-spacing:-.03em;
+
+margin-bottom:18px;
+
+}
+
+.landing-footer-logo span{
+
+color:#2cc874;
+
+}
+
+       .landing-footer-tagline{
+
+font-size:15px;
+
+line-height:1.8;
+
+color:rgba(255,255,255,.62);
+
+max-width:360px;
+
+margin-bottom:26px;
+
+}
 
         .landing-footer-email {
           display: inline-flex;
@@ -69,30 +164,65 @@ export default function LandingFooter() {
           color: #fff;
         }
 
-        .landing-footer-social {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
+.landing-footer-social{
 
-        .landing-footer-social a {
-          color: rgba(255, 255, 255, 0.5);
-          transition: color 0.2s;
-          display: flex;
-        }
+display:flex;
 
-        .landing-footer-social a:hover {
-          color: #fff;
-        }
+gap:12px;
 
-        .landing-footer-col-title {
-          font-size: 11px;
-          font-weight: 700;
-          color: rgba(255, 255, 255, 0.4);
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          margin-bottom: 18px;
-        }
+}
+
+.landing-footer-social a{
+
+width:44px;
+
+height:44px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+
+}
+
+.landing-footer-social a:hover{
+
+transform:translateY(-4px);
+
+background:#20b26b;
+
+box-shadow:
+
+0 10px 30px rgba(32,178,107,.35);
+
+color:white;
+
+}
+
+.landing-footer-col-title{
+
+font-size:.8rem;
+
+font-weight:700;
+
+letter-spacing:.18em;
+
+color:#7adba8;
+
+margin-bottom:22px;
+
+text-transform:uppercase;
+
+}
 
         .landing-footer-links {
           list-style: none;
@@ -101,16 +231,25 @@ export default function LandingFooter() {
           gap: 12px;
         }
 
-        .landing-footer-links a {
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.5);
-          text-decoration: none;
-          transition: color 0.2s;
-        }
+.landing-footer-links a{
 
-        .landing-footer-links a:hover {
-          color: #fff;
-        }
+display:inline-block;
+
+color:rgba(255,255,255,.55);
+
+transition:.3s;
+
+text-decoration:none;
+
+}
+
+.landing-footer-links a:hover{
+
+color:#fff;
+
+transform:translateX(6px);
+
+}
 
         .landing-footer-contact li {
           display: flex;
@@ -137,13 +276,23 @@ export default function LandingFooter() {
           color: #fff;
         }
 
-        .landing-footer-bottom {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 12px;
-        }
+.landing-footer-bottom{
+
+padding-top:26px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+position:relative;
+
+z-index:2;
+
+}
 
         .landing-footer-copy {
           font-size: 12px;
@@ -170,15 +319,33 @@ export default function LandingFooter() {
           }
         }
 
-        @media (max-width: 640px) {
-          .landing-footer {
-            padding: 40px 24px 24px;
-          }
-          .landing-footer-grid {
-            grid-template-columns: 1fr;
-            gap: 28px;
-          }
-        }
+       @media(max-width:900px){
+
+.landing-footer{
+
+padding:70px 28px 30px;
+
+}
+
+.landing-footer-grid{
+
+grid-template-columns:1fr;
+
+gap:42px;
+
+}
+
+.landing-footer-bottom{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:10px;
+
+}
+
+}
       `}</style>
 
       <footer className="landing-footer">
@@ -192,20 +359,20 @@ export default function LandingFooter() {
                 Pilihan Yang Tepat Di Sekolah Yang M.A.N.T.A.P
               </p>
               <a
-                href="mailto:hello@smkdigital.sch.id"
+                href="mailto:info@citranegara.sch.id"
                 className="landing-footer-email"
               >
                 <Mail size={16} />
-                hello@smkdigital.sch.id
+                info@citranegara.sch.id
               </a>
               <div className="landing-footer-social">
-                <a href="#" aria-label="Website">
+                <a href="https://smk.citranegara.sch.id" aria-label="Website">
                   <Globe size={20} />
                 </a>
-                <a href="#" aria-label="Instagram">
+                <a href="https://www.instagram.com/smkcitranegaradepok?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
                   <Share2 size={20} />
                 </a>
-                <a href="#" aria-label="YouTube">
+                <a href="https://youtube.com/@citranegaratv9070?si=KyjkZga3Y6eTpZs6" aria-label="YouTube">
                   <PlayCircle size={20} />
                 </a>
               </div>
@@ -252,13 +419,13 @@ export default function LandingFooter() {
               <ul className="landing-footer-links landing-footer-contact">
                 <li>
                   <Mail size={16} />
-                  <a href="mailto:hello@smkdigital.sch.id">
-                    hello@smkdigital.sch.id
+                  <a href="mailto:info@citranegara.sch.id">
+                    info@citranegara.sch.id
                   </a>
                 </li>
                 <li>
                   <Phone size={16} />
-                  <a href="tel:02177201052">(021) 77201052</a>
+                  <a href="tel:(021) 77201052">(021) 77201052</a>
                 </li>
                 <li>
                   <MapPin size={16} />
